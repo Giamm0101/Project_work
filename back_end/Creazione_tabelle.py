@@ -12,8 +12,7 @@ CREATE TABLE restaurant (
     total_reviews_count INT,
     city_id INT UNIQUE,
     longitude FLOAT,
-    latitude FLOAT,
-    FOREIGN KEY (city_id) REFERENCES city(city_id)
+    latitude FLOAT
 );
 """
 
@@ -105,5 +104,11 @@ restaurant_id INT,
 PRIMARY KEY (restaurant_id, users_id),
 FOREIGN KEY (restaurant_id) REFERENCES restaurant(restaurant_id),
 FOREIGN KEY (users_id) REFERENCES users(users_id)
+);
+"""
+
+alter_table_restaurant = """
+ALTER TABLE restaurant
+ADD FOREIGN KEY (city_id) REFERENCES city(city_id) ON DELETE RESTRICT
 );
 """
