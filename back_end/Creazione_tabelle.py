@@ -11,6 +11,7 @@ CREATE TABLE restaurant (
     avg_rating FLOAT,
     total_reviews_count INT,
     city_id INT UNIQUE,
+    address VARCHAR(150),
     longitude FLOAT,
     latitude FLOAT
 );
@@ -18,37 +19,42 @@ CREATE TABLE restaurant (
 
 create_table_country = """
 CREATE TABLE country (
-country_id INT AUTO_INCREMENT PRIMARY KEY,
+country_id INT PRIMARY KEY,
 name VARCHAR(100)
 );
 """
 
 create_table_region = """
 CREATE TABLE region (
-region_id INT AUTO_INCREMENT PRIMARY KEY,
+region_id INT PRIMARY KEY,
 name VARCHAR(100),
-country_id INT UNIQUE,
+country_id INT,
 FOREIGN KEY (country_id) REFERENCES country(country_id)
+ON DELETE CASCADE
+ON UPDATE CASCADE
 );
 """
 
 create_table_province = """
 CREATE TABLE province (
-province_id INT AUTO_INCREMENT PRIMARY KEY,
+province_id INT PRIMARY KEY,
 name VARCHAR(100),
-region_id INT UNIQUE,
+region_id INT,
 FOREIGN KEY (region_id) REFERENCES region(region_id)
+ON DELETE CASCADE
+ON UPDATE CASCADE
 );
 """
 
 
 create_table_city = """
 CREATE TABLE city (
-city_id INT AUTO_INCREMENT PRIMARY KEY,
+city_id INT PRIMARY KEY,
 name VARCHAR(100),
-province_id INT UNIQUE,
-address VARCHAR(250),
+province_id INT,
 FOREIGN KEY (province_id) REFERENCES province(province_id)
+ON DELETE CASCADE
+ON UPDATE CASCADE
 );
 """
 
