@@ -137,6 +137,27 @@
             }
         }
 
+        /* Styles for the featured card */
+        .featured-card {
+            grid-column: span 2;
+            /* Spans across two grid columns */
+            position: relative;
+            margin-bottom: 30px;
+            /* Add some space between the featured card and others */
+            z-index: 2000;
+            /* Ensure it appears above everything else */
+        }
+
+        .featured-card img {
+            width: 50%;
+            float: left;
+            /* Position the image to the left */
+        }
+
+        .featured-card .card-content {
+            padding-left: 50%;
+            /* Adjust padding to accommodate the image */
+        }
     </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -193,8 +214,14 @@
     <div id="intro" class="bg-image shadow-2-strong">
 
         <div class="mask" style="background-color: rgba(0, 0, 0, 0.8);"></div>
-        <div class="card_up" style="z-index: 1000;">
-
+        <div class="featured-card">
+            <img src="/static/tavola2.avif" alt="Featured Card Image" style="width: 300px;">
+            <div class="card-content">
+                <h2 class="card-title">Featured Card Title</h2>
+                <p class="card-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et lectus
+                    quis tellus
+                    interdum congue. Mauris ut neque ultricies</p>
+            </div>
         </div>
         <div class="container">
             <div class="card">
