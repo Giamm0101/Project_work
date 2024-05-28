@@ -5,13 +5,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="/static/Logo.png" type="image/png">
-  <title>project work</title>
+  <title>Contatti</title>
 
   <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+
     #intro {
       position: relative;
       width: 100%;
-      height: 120vh;
+      height: 100vh;
       background: url('/static/tavola2.avif') no-repeat center center/cover;
     }
 
@@ -33,23 +37,18 @@
     .carousel-caption {
       pointer-events: none;
       background-color: rgba(255, 255, 255, 0.5);
-      /* Light gray background with 50% opacity */
       padding: 10px;
-      /* Add some padding around the text */
       border-radius: 5px;
     }
 
     .carousel-caption h5 {
       font-size: 2rem;
       color: black;
-
-
     }
 
     .carousel-caption p {
       font-size: 1.25rem;
       color: black;
-
     }
 
     .carousel-caption .btn {
@@ -58,18 +57,12 @@
       pointer-events: stroke;
       color: black;
       background-color: rgba(255, 255, 255, 0.5);
-      /* Light gray background with 50% opacity */
-      padding: 10px;
-      /* Add some padding around the text */
       border-radius: 5px;
-      padding-top: 0;
     }
 
     .carousel-item img:hover {
       filter: saturate(140%);
-      /* Adjust shadow properties */
       transition: filter 0.3s ease-in-out;
-      /* Smooth transition */
     }
 
     .carousel-item img {
@@ -83,21 +76,91 @@
       text-align: center;
     }
 
+    .contact-container {
+      position: relative;
+      z-index: 1000;
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+      background-color: #fff;
+      padding-top: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      font-weight: bold;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      height: 150px;
+    }
+
+    .btn-primary {
+      background-color: #8fa382;
+      border-color: #8fa382;
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background-color: #789774;
+      border-color: #789774;
+    }
+
+    .contact-info {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .contact-info p {
+      margin: 5px 0;
+    }
+
+    .contact-info i {
+      margin-right: 10px;
+    }
+
+    footer {
+      background-color: #8fa382;
+    }
+
+    footer a {
+      color: black;
+    }
+
+    footer a:hover {
+      color: #444;
+      text-decoration: underline;
+    }
+
+    #map {
+      width: 100%;
+      height: 400px;
+    }
   </style>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="style.css" type="text/css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:wght@100..900&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -108,9 +171,8 @@
   <!--fine logo superiore-->
   <h3>La tua Guida Completa per Mangiare Senza Glutine in Europa</h3>
   <!--navbar-->
-  <nav class="navbar navbar-expand-lg bg-body-tertiary " style="padding: 0%;">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary" style="padding: 0%;">
     <div class="container-fluid" style="background-color: #8fa382">
-
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -118,7 +180,7 @@
       <div class="collapse navbar-collapse" id="navbarNav" style="justify-content: center; font-size: x-large;">
         <ul class="navbar-nav gap-5">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{{url_for('home')}}" >GlutAdvisor</a>
+            <a class="nav-link active" aria-current="page" href="{{url_for('home')}}">GlutAdvisor</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{url_for('ristoranti')}}">Ristoranti</a>
@@ -134,16 +196,56 @@
     </div>
   </nav>
   <!-- fine navbar-->
-  
+
   <!--sfondo-->
   <div id="intro" class="bg-image shadow-2-strong">
     <div class="mask" style="background-color: rgba(0, 0, 0, 0.8);"></div>
 
+    <div class="contact-container">
+      <div class="row">
+        <div class="col-md-6">
+          <h2>Contattaci</h2>
+          <form>
+            <div class="form-group">
+              <label for="name">Nome</label>
+              <input type="text" id="name" class="form-control" placeholder="Il tuo nome" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" class="form-control" placeholder="La tua email" required>
+            </div>
+            <div class="form-group">
+              <label for="subject">Oggetto</label>
+              <input type="text" id="subject" class="form-control" placeholder="L'oggetto del messaggio" required>
+            </div>
+            <div class="form-group">
+              <label for="message">Messaggio</label>
+              <textarea id="message" class="form-control" placeholder="Il tuo messaggio" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Invia</button>
+          </form>
+        </div>
+        <div class="col-md-6">
+          <h2>La nostra posizione</h2>
+          <div id="map">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d2969.916213940314!2d12.479972712510383!3d41.894658971119966!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDHCsDUzJzQwLjgiTiAxMsKwMjgnNTcuMiJF!5e0!3m2!1sit!2sit!4v1716901181665!5m2!1sit!2sit"
+              width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+      <div class="contact-info">
+        <p><i class="fa fa-map-marker"></i> Piazza Venezia, 1, 00100 Roma RM, Italia</p>
+        <p><i class="fa fa-phone"></i> +39 333 44 55 66</p>
+        <p><i class="fa fa-envelope"></i> glutadvisor@gmail.com</p>
+      </div>
+    </div>
   </div>
   <!--fine sfondo-->
 
   <!-- Footer -->
-  <footer class="text-black pt-4" style="background-color: #8fa382;">
+  <footer class="text-black pt-4">
     <div class="container">
       <div class="row">
         <div class="col-md-4 mb-4">
@@ -176,24 +278,10 @@
     </div>
   </footer>
 
-  <!-- FontAwesome JS (for icons) -->
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
-
-  <script>
-    const carouselItems = document.querySelectorAll('.carousel-item');
-
-    carouselItems.forEach(item => {
-      item.addEventListener('mouseenter', () => {
-        const image = item.querySelector('img');
-        image.classList.add('carousel-blur'); // Add the hover effect class
-      });
-    });
-  </script>
-
 </body>
 
 </html>
