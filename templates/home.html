@@ -118,16 +118,16 @@
       <div class="collapse navbar-collapse" id="navbarNav" style="justify-content: center; font-size: x-large;">
         <ul class="navbar-nav gap-5">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">GlutAdvisor</a>
+            <a class="nav-link active" aria-current="page" href="{{url_for('home')}}" >GlutAdvisor</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Ristoranti</a>
+            <a class="nav-link" href="{{url_for('ristoranti')}}">Ristoranti</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Chi siamo</a>
+            <a class="nav-link" href="{{url_for('chi_siamo')}}">Chi siamo</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" aria-disabled="true">Contatti</a>
+            <a class="nav-link" href="{{url_for('contatti')}}">Contatti</a>
           </li>
         </ul>
       </div>
@@ -210,9 +210,9 @@
         <div class="col-md-4 mb-4">
           <h5>Useful Links</h5>
           <ul class="list-unstyled">
-            <li><a href="#" class="text-black">Home</a></li>
-            <li><a href="#" class="text-black">Chi siamo</a></li>
-            <li><a href="#" class="text-black">Contatti</a></li>
+            <li><a href="{{url_for('home')}}" class="text-black">Home</a></li>
+            <li><a href="{{url_for('chi_siamo')}}" class="text-black">Chi siamo</a></li>
+            <li><a href="{{url_for('contatti')}}" class="text-black">Contatti</a></li>
           </ul>
         </div>
         <div class="col-md-4 mb-4">
