@@ -92,3 +92,25 @@ def execute_list_query(connection, sql, val):
         print("Query successful")
     except Error as err:
         print(f"Error: '{err}'")
+
+
+def read_query_place1(connection, query, params):
+    try:
+        cursor = connection.cursor()
+        cursor.execute(query, params)
+        result = cursor.fetchone()
+        cursor.close()
+        return result[0] if result else None
+    except mysql.connector.Error as err:
+        print(f"Error: {err}")
+        return None
+
+# Funzione per eseguire una query di inserimento nel database
+def execute_query_place1(connection, query, params):
+    try:
+        cursor = connection.cursor()
+        cursor.execute(query, params)
+        connection.commit()
+        cursor.close()
+    except mysql.connector.Error as err:
+        print(f"Error: {err}")

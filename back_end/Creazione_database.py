@@ -60,19 +60,28 @@ for country in set_country:
 diz_region={}
 id_region = 1
 for country, region in zip(lista_country, lista_region):
-    diz_region[region] = {'id_region' : id_region, 'country': diz_country[country]}
-    id_region+=1
+    if region== '' or country=='':
+        continue
+    else:
+        diz_region[region] = {'id_region' : id_region, 'country': diz_country[country]}
+        id_region+=1
 
 diz_province={}
 id_province=1
 for region, province in zip(lista_region, lista_province):
-    diz_province[province] = {'id_province': id_province, 'region' : diz_region[region]['id_region']}
-    id_province+=1
+    if province=='' or region=='':
+        continue
+    else:
+        diz_province[province] = {'id_province': id_province, 'region' : diz_region[region]['id_region']}
+        id_province+=1
 diz_city={}
 id_city=1
 for province, city in zip(lista_province, lista_city):
-    diz_city[city] = {'id_city' : id_city, 'province' : diz_province[province]['id_province']}
-    id_city +=1
+    if city=='' or province=='':
+        continue
+    else:
+        diz_city[city] = {'id_city' : id_city, 'province' : diz_province[province]['id_province']}
+        id_city +=1
 
 
 for k,v in diz_country.items():
@@ -109,6 +118,7 @@ for cuisines in lista_cuisine:
     t = (cuisines, )
     execute_query_place(connection2, q, t)
 
+print(diz_province)
 print(diz_city)
 
 

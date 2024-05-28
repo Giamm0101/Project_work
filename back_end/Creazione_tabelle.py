@@ -10,51 +10,20 @@ CREATE TABLE restaurant (
     original_open_hours VARCHAR(500),
     avg_rating FLOAT,
     total_reviews_count INT,
-    city_id INT UNIQUE,
+    location_id INT,
     address VARCHAR(150),
     longitude FLOAT,
     latitude FLOAT
 );
 """
 
-create_table_country = """
-CREATE TABLE country (
-country_id INT PRIMARY KEY,
-name VARCHAR(100)
-);
-"""
-
-create_table_region = """
-CREATE TABLE region (
-region_id INT PRIMARY KEY,
-name VARCHAR(100),
-country_id INT,
-FOREIGN KEY (country_id) REFERENCES country(country_id)
-ON DELETE CASCADE
-ON UPDATE CASCADE
-);
-"""
-
-create_table_province = """
-CREATE TABLE province (
-province_id INT PRIMARY KEY,
-name VARCHAR(100),
-region_id INT,
-FOREIGN KEY (region_id) REFERENCES region(region_id)
-ON DELETE CASCADE
-ON UPDATE CASCADE
-);
-"""
-
-
-create_table_city = """
-CREATE TABLE city (
-city_id INT PRIMARY KEY,
-name VARCHAR(100),
-province_id INT,
-FOREIGN KEY (province_id) REFERENCES province(province_id)
-ON DELETE CASCADE
-ON UPDATE CASCADE
+create_table_location = """
+CREATE TABLE location (
+location_id INT PRIMARY KEY,
+country VARCHAR(100),
+region VARCHAR(150),
+province VARCHAR(150),
+city VARCHAR(150)
 );
 """
 
@@ -115,6 +84,7 @@ FOREIGN KEY (users_id) REFERENCES users(users_id)
 
 alter_table_restaurant = """
 ALTER TABLE restaurant
-ADD FOREIGN KEY (city_id) REFERENCES city(city_id) ON DELETE RESTRICT
-);
+ADD FOREIGN KEY (location_id) REFERENCES location(location_id) ON DELETE RESTRICT;
 """
+
+
