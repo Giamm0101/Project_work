@@ -1,3 +1,4 @@
+-html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +12,8 @@
     #intro {
       position: relative;
       width: 100%;
-      height: 120vh;
+      height: auto;
+      min-height: 100vh;
       background: url('/static/tavola2.avif') no-repeat center center/cover;
     }
 
@@ -33,23 +35,18 @@
     .carousel-caption {
       pointer-events: none;
       background-color: rgba(255, 255, 255, 0.5);
-      /* Light gray background with 50% opacity */
       padding: 10px;
-      /* Add some padding around the text */
       border-radius: 5px;
     }
 
     .carousel-caption h5 {
       font-size: 2rem;
       color: black;
-
-
     }
 
     .carousel-caption p {
       font-size: 1.25rem;
       color: black;
-
     }
 
     .carousel-caption .btn {
@@ -58,18 +55,14 @@
       pointer-events: stroke;
       color: black;
       background-color: rgba(255, 255, 255, 0.5);
-      /* Light gray background with 50% opacity */
       padding: 10px;
-      /* Add some padding around the text */
       border-radius: 5px;
       padding-top: 0;
     }
 
     .carousel-item img:hover {
       filter: saturate(140%);
-      /* Adjust shadow properties */
       transition: filter 0.3s ease-in-out;
-      /* Smooth transition */
     }
 
     .carousel-item img {
@@ -83,6 +76,30 @@
       text-align: center;
     }
 
+    .card {
+      border: 1px solid #ccc;
+      padding: 16px;
+      margin: 8px;
+      border-radius: 8px;
+      background-color: #fff; /* Aggiunto sfondo bianco per le card */
+    }
+
+    .pagination {
+      margin: 20px;
+      text-align: center;
+    }
+
+    .page-link {
+      margin: 0 5px;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    #card-container {
+      position: relative;
+      z-index: 1;
+      padding-bottom: 50px; /* Aggiunto spazio per evitare sovrapposizione con il footer */
+    }
   </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -138,7 +155,8 @@
   <!--sfondo-->
   <div id="intro" class="bg-image shadow-2-strong">
     <div class="mask" style="background-color: rgba(0, 0, 0, 0.8);"></div>
-
+    <div id="card-container"></div>
+    <div class="pagination" id="pagination"></div>
   </div>
   <!--fine sfondo-->
 
@@ -193,6 +211,52 @@
       });
     });
   </script>
+  <script>
+    const CARDS_PER_PAGE = 10;
+    let currentPage = 1;
+    let totalCards = 100;  // Adatta questo valore al numero totale di card
+
+    function fetchCards(page) {
+        fetch(`/api/cards?page=${page}`)
+            .then(response => response.json())
+            .then(data => {
+                renderCards(data);
+                renderPagination();
+            });
+    }
+
+    function renderCards(cards) {
+        const container = document.getElementById('card-container');
+        container.innerHTML = '';
+        cards.forEach(card => {
+            const cardElement = document.createElement('div');
+            cardElement.className = 'card';
+            cardElement.innerHTML = `<h3>${card.title}</h3><p>${card.content}</p>`;
+            container.appendChild(cardElement);
+        });
+    }
+
+    function renderPagination() {
+        const paginationContainer = document.getElementById('pagination');
+        paginationContainer.innerHTML = '';
+        const totalPages = Math.ceil(totalCards / CARDS_PER_PAGE);
+
+        for (let i = 1; i <= totalPages; i++) {
+            const pageLink = document.createElement('span');
+            pageLink.className = 'page-link';
+            pageLink.innerText = i;
+            pageLink.onclick = () => {
+                currentPage = i;
+                fetchCards(currentPage);
+            };
+            paginationContainer.appendChild(pageLink);
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        fetchCards(currentPage);
+    });
+</script>
 
 </body>
 
