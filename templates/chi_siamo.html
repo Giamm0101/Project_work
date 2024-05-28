@@ -83,13 +83,14 @@
             text-align: center;
         }
 
-        .container {
+        .container_ {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 20px;
             padding: 20px;
             max-width: 100%;
             justify-items: center;
+            
         }
 
         .card {
@@ -99,7 +100,8 @@
             overflow: hidden;
             transition: transform 0.3s ease;
             z-index: 1000;
-            width: 250px;
+            width: 200px;
+            
         }
 
         .card:hover {
@@ -139,10 +141,14 @@
 
         /* Styles for the featured card */
         .featured-card {
+            display: inline-block;
+            width: 100%;
             grid-column: span 2;
             /* Spans across two grid columns */
             position: relative;
             margin-bottom: 30px;
+            margin-top: 50px;
+            background-color: rgba(255, 255, 255, 0.664);
             /* Add some space between the featured card and others */
             z-index: 2000;
             /* Ensure it appears above everything else */
@@ -155,9 +161,10 @@
         }
 
         .featured-card .card-content {
-            padding-left: 50%;
+            padding-left: 25%;
             /* Adjust padding to accommodate the image */
         }
+
     </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -217,13 +224,13 @@
         <div class="featured-card">
             <img src="/static/tavola2.avif" alt="Featured Card Image" style="width: 300px;">
             <div class="card-content">
-                <h2 class="card-title">Featured Card Title</h2>
+                <h2 class="card-title">Gruppo 3</h2>
                 <p class="card-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et lectus
                     quis tellus
                     interdum congue. Mauris ut neque ultricies</p>
             </div>
         </div>
-        <div class="container">
+        <div class="container_">
             <div class="card">
                 <img src="https://via.placeholder.com/300" alt="Placeholder Image">
                 <div class="card-content">
