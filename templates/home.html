@@ -11,12 +11,13 @@
     #intro {
       position: relative;
       width: 100%;
-      height: 120vh;
+      height: auto;
       background: url('/static/tavola2.avif') no-repeat center center/cover;
+      padding-bottom: 50px;
     }
 
     #intro::after {
-      content: '';
+      content: 'Prova i nostri migliori ristoranti adatti alle tue esigenze, scegli in base alla nazione e poi filtra per la categoria di cibo';
       position: absolute;
       top: 0;
       left: 0;
@@ -134,11 +135,12 @@
     </div>
   </nav>
   <!-- fine navbar-->
-  
+
   <!--sfondo-->
   <div id="intro" class="bg-image shadow-2-strong">
+    
     <div class="mask" style="background-color: rgba(0, 0, 0, 0.8);"></div>
-
+    
     <div class="container-fluid">
       <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel" style="z-index: 600;">
         <div class="carousel-inner" style="display: flex; max-width: 50%; margin: auto; padding-top: 50px;">
