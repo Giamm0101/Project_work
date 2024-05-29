@@ -58,6 +58,14 @@ def execute_query_place(connection, query, place):
     except Error as err:
         print(f"Error: '{err}'")
 
+
+def execute_query_place2(connection, query, place):
+    cursor = connection.cursor()
+    try:
+        cursor.execute(query, place)
+    except Error as err:
+        print(f"Error: '{err}'")
+
 def read_query(connection, query, /,*,dictionary= False):
     if dictionary:
         cursor = connection.cursor(dictionary=True)
@@ -114,3 +122,12 @@ def execute_query_place1(connection, query, params):
         cursor.close()
     except mysql.connector.Error as err:
         print(f"Error: {err}")
+
+def execute_query_place_many(connection, query, place, lista):
+    cursor = connection.cursor()
+    try:
+        cursor.executemany(query, lista)
+        connection.commit()
+        # print("Query successful")
+    except Error as err:
+        print(f"Error: '{err}'")

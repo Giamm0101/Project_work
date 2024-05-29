@@ -27,6 +27,7 @@ def fetch_query_results(connection, query, params):
     cursor.close()
     return result
 
+#Inserimento dati tipi di cucina e diete speciali
 def insert_special_diets_and_cuisines(connection, lettore):
     lista_special_diet = set()
     lista_cuisine = set()
@@ -50,6 +51,8 @@ def insert_special_diets_and_cuisines(connection, lettore):
         t = (cuisines,)
         execute_query_place(connection, q, t)
 
+
+#Inserimento dati location e ristoranti
 def insert_data(connection, lettore):
     id = 1
     for riga in tqdm(lettore):
@@ -74,7 +77,10 @@ def insert_data(connection, lettore):
         execute_query_place(connection, q, t)
         id += 1
 
+
+#Inserimento associazioni ristorante diete speciali
 def insert_associations(connection, lettore):
+    diz ={}
     for riga in tqdm(lettore):
         restaurant_link = riga[1].strip()
         special_diet_list = [diet.strip() for diet in riga[14].split(',') if diet.strip()]
@@ -82,12 +88,15 @@ def insert_associations(connection, lettore):
         for elem in special_diet_list:
             restaurant_query = "SELECT restaurant_id FROM restaurant WHERE restaurant_link = %s"
             restaurant_id = fetch_query_results(connection, restaurant_query, (restaurant_link,))
-            diet_query = "SELECT special_diet_id FROM special_diet WHERE name = %s"
-            diet_id = fetch_query_results(connection, diet_query, (elem,))
+            if elem not in diz:
+                diet_query = "SELECT special_diet_id FROM special_diet WHERE name = %s"
+                diz[elem]= diet_query
+            diet_id = fetch_query_results(connection, diz[elem], (elem,))
 
             if restaurant_id and diet_id:
                 link_query = "INSERT INTO risto_diet (restaurant_id, special_diet_id) VALUES (%s, %s)"
-                execute_query_place(connection, link_query, (restaurant_id[0][0], diet_id[0][0]))
+                execute_query_place2(connection, link_query, (restaurant_id[0][0], diet_id[0][0]))
+    connection.commit()
 
 
 # First pass to insert special diets and cuisines
@@ -107,3 +116,39 @@ with open('Dataset_ancora_più_pulito.csv', encoding='utf-8') as file:
     lettore = csv.reader(file, delimiter=",")
     next(lettore)
     insert_associations(connection2, lettore)
+
+
+def insert_associations2(connection, lettore):
+    for riga in tqdm(lettore):
+        restaurant_link = riga[1].strip()
+        cuisine_list = [cuisine.strip() for cuisine in riga[13].split(',') if cuisine.strip()]
+
+        for elem in cuisine_list:
+            restaurant_query = "SELECT restaurant_id FROM restaurant WHERE restaurant_link = %s"
+            restaurant_id = fetch_query_results(connection, restaurant_query, (restaurant_link,))
+            cuisine_query = "SELECT cuisine_id FROM cuisine WHERE name = %s"
+            cuisine_id = fetch_query_results(connection, cuisine_query, (elem,))
+
+            if restaurant_id and cuisine_id:
+                link_query = "INSERT INTO risto_cuisine (restaurant_id, cuisine_id) VALUES (%s, %s)"
+                execute_query_place(connection, link_query, (restaurant_id[0][0], cuisine_id[0][0]))
+
+
+# First pass to insert special diets and cuisines
+with open('Dataset_ancora_più_pulito.csv', encoding='utf-8') as file:
+    lettore = csv.reader(file, delimiter=",")
+    next(lettore)
+    insert_special_diets_and_cuisines(connection2, lettore)
+
+# Second pass to insert location and restaurant data
+with open('Dataset_ancora_più_pulito.csv', encoding='utf-8') as file:
+    lettore = csv.reader(file, delimiter=",")
+    next(lettore)
+    insert_data(connection2, lettore)
+
+# Third pass to insert associations
+with open('Dataset_ancora_più_pulito.csv', encoding='utf-8') as file:
+    lettore = csv.reader(file, delimiter=",")
+    next(lettore)
+    insert_associations2(connection2, lettore)
+
