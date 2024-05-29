@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, redirect, url_for
 import mysql.connector
 
 app = Flask(__name__)
@@ -31,8 +31,14 @@ def home():
 
 @app.route('/ristoranti')
 def ristoranti():
-    ristoranti = execute_query('SELECT * FROM restaurant LIMIT 10')
+    ristoranti = execute_query('SELECT * FROM restaurant LIMIT 15')
     return render_template("ristoranti.html", ristoranti=ristoranti)
+
+@app.route('/ristoranti/<country>')
+def ristoranti_country(country):
+    ristoranti = execute_query('SELECT * FROM restaurant AS r JOIN location AS l ON r.location_id = l.location_id WHERE l.country = %s LIMIT 15', (country,))
+    return render_template("ristoranti_country.html", ristoranti=ristoranti)
+    #return ristoranti
 
 @app.route('/chi_siamo')
 def chi_siamo():
