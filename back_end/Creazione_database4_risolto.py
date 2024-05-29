@@ -264,3 +264,18 @@ with open('users_definitivo.csv', encoding='utf-8') as file:
         password=riga[4]
         t=(nick, name, surname, email, password)
         execute_query_place(connection2, q, t)
+
+with open('recensioni_totali_user.csv', encoding='utf-8') as file:
+    lettore = csv.reader(file, delimiter=",")
+    next(lettore)
+    for riga in lettore:
+        q= 'INSERT INTO review(title, data, target, t_review, punteggio, photo1, photo2) VALUES (%s,%s,%s,%s,%s,%s,%s)'
+        title= riga[0]
+        data=riga[2]
+        target=riga[3]
+        t_review=riga[4]
+        punteggio=riga[5]
+        photo1 = riga[6]
+        photo2 = riga[7]
+        t=(title, data, target, t_review, punteggio,photo1, photo2)
+        execute_query_place(connection2, q, t)
