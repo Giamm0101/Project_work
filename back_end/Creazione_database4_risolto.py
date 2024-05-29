@@ -250,3 +250,17 @@ with open('Dataset_ancora_più_pulito.csv', encoding='utf-8') as file:
     lettore = csv.reader(file, delimiter=",")
     next(lettore)
     insert_associations_cuisine(connection2, lettore, diz_ris)
+
+
+with open('users_definitivo.csv', encoding='utf-8') as file:
+    lettore = csv.reader(file, delimiter=",")
+    next(lettore)
+    for riga in lettore:
+        q= 'INSERT INTO users(nickname, name, surname, email, password) VALUES (%s,%s,%s,%s,%s)'
+        nick= riga[0]
+        name=riga[1]
+        surname=riga[2]
+        email=riga[3]
+        password=riga[4]
+        t=(nick, name, surname, email, password)
+        execute_query_place(connection2, q, t)
