@@ -4,6 +4,8 @@ from Creazione_tabelle import *
 from tqdm import tqdm
 
 DB_NAME = 'Ristoranti'
+MAX_ROWS = 1000
+
 connection = create_server_connection('localhost', 'root', '')
 execute_query(connection, f'drop database {DB_NAME}')
 create_database(connection, DB_NAME)
@@ -30,8 +32,11 @@ def fetch_query_results(connection, query, params):
 def insert_special_diets_and_cuisines(connection, lettore):
     lista_special_diet = set()
     lista_cuisine = set()
+    row_count = 0
 
     for riga in tqdm(lettore):
+        if row_count >= MAX_ROWS:
+            break
         c = riga[14].split(',')
         for elem in c:
             lista_special_diet.add(elem.strip())
@@ -39,6 +44,7 @@ def insert_special_diets_and_cuisines(connection, lettore):
         for elem in cuisine:
             if elem:
                 lista_cuisine.add(elem.strip())
+        row_count += 1
 
     for special_diet in lista_special_diet:
         q = 'INSERT INTO special_diet(name) VALUES(%s) ON DUPLICATE KEY UPDATE name = name'
@@ -52,7 +58,11 @@ def insert_special_diets_and_cuisines(connection, lettore):
 
 def insert_data(connection, lettore):
     id = 1
+    row_count = 0
+
     for riga in tqdm(lettore):
+        if row_count >= MAX_ROWS:
+            break
         q = 'INSERT INTO location(location_id, country, region, province, city) VALUES (%s, %s, %s, %s, %s)'
         t = (
             id,
@@ -73,9 +83,14 @@ def insert_data(connection, lettore):
         )
         execute_query_place(connection, q, t)
         id += 1
+        row_count += 1
 
 def insert_associations(connection, lettore):
+    row_count = 0
+
     for riga in tqdm(lettore):
+        if row_count >= MAX_ROWS:
+            break
         restaurant_link = riga[1].strip()
         special_diet_list = [diet.strip() for diet in riga[14].split(',') if diet.strip()]
 
@@ -88,7 +103,7 @@ def insert_associations(connection, lettore):
             if restaurant_id and diet_id:
                 link_query = "INSERT INTO risto_diet (restaurant_id, special_diet_id) VALUES (%s, %s)"
                 execute_query_place(connection, link_query, (restaurant_id[0][0], diet_id[0][0]))
-
+        row_count += 1
 
 # First pass to insert special diets and cuisines
 with open('Dataset_ancora_più_pulito.csv', encoding='utf-8') as file:
@@ -107,3 +122,4 @@ with open('Dataset_ancora_più_pulito.csv', encoding='utf-8') as file:
     lettore = csv.reader(file, delimiter=",")
     next(lettore)
     insert_associations(connection2, lettore)
+
