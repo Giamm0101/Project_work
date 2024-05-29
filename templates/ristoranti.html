@@ -16,7 +16,7 @@
       background: url('/static/tavola2.avif') no-repeat center center/cover;
     }
 
-    #intro::after {
+    .mask {
       content: '';
       position: absolute;
       top: 0;
@@ -31,42 +31,6 @@
       background-color: #8fa382;
     }
 
-    .carousel-caption {
-      pointer-events: none;
-      background-color: rgba(255, 255, 255, 0.5);
-      padding: 10px;
-      border-radius: 5px;
-    }
-
-    .carousel-caption h5 {
-      font-size: 2rem;
-      color: black;
-    }
-
-    .carousel-caption p {
-      font-size: 1.25rem;
-      color: black;
-    }
-
-    .carousel-caption .btn {
-      font-size: 1rem;
-      padding: 10px 20px;
-      pointer-events: stroke;
-      color: black;
-      background-color: rgba(255, 255, 255, 0.5);
-      padding: 10px;
-      border-radius: 5px;
-      padding-top: 0;
-    }
-
-    .carousel-item img:hover {
-      filter: saturate(140%);
-      transition: filter 0.3s ease-in-out;
-    }
-
-    .carousel-item img {
-      border-radius: 20px;
-    }
 
     h3 {
       background-color: #8fa382;
@@ -80,7 +44,8 @@
       padding: 16px;
       margin: 8px;
       border-radius: 8px;
-      background-color: #fff; /* Aggiunto sfondo bianco per le card */
+      background-color: #fff;
+      /* Aggiunto sfondo bianco per le card */
     }
 
     .pagination {
@@ -93,12 +58,10 @@
       cursor: pointer;
       z-index: 2;
     }
-
-    #card-container {
-      position: relative;
-      z-index: 1;
-      padding-bottom: 50px; /* Aggiunto spazio per evitare sovrapposizione con il footer */
+    .accordion-body {
+      z-index: 1000;
     }
+
   </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -134,7 +97,7 @@
       <div class="collapse navbar-collapse" id="navbarNav" style="justify-content: center; font-size: x-large;">
         <ul class="navbar-nav gap-5">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{{url_for('home')}}" >GlutAdvisor</a>
+            <a class="nav-link active" aria-current="page" href="{{url_for('home')}}">GlutAdvisor</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{url_for('ristoranti')}}">Ristoranti</a>
@@ -150,11 +113,32 @@
     </div>
   </nav>
   <!-- fine navbar-->
-  
+
   <!--sfondo-->
   <div id="intro" class="bg-image shadow-2-strong">
-    <div class="mask" style="background-color: rgba(0, 0, 0, 0.8);"></div>
-    <div id="card-container"></div>
+    <div class="mask"></div>
+    <!--inizio per gli accordion-->
+    {% for restaurant in ristoranti %}
+    <div class="accordion" id="accordionExample" style="position: relative;">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="heading{{ restaurant.id }}">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapse{{ restaurant.id }}">
+            {{ restaurant.title }}
+          </button>
+        </h2>
+        <div class="accordion-collapse collapse" id="collapse{{ restaurant.id }}" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <p>{{ restaurant.author }}</p>
+            <p>Address: {{ restaurant.genre }}</p>
+            <p>Phone: {{ restaurant.publisher }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+
+    <!--fine per gli accordion-->
     <div class="pagination" id="pagination"></div>
   </div>
   <!--fine sfondo-->
@@ -200,62 +184,34 @@
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
 
-  <script>
-    const carouselItems = document.querySelectorAll('.carousel-item');
 
-    carouselItems.forEach(item => {
-      item.addEventListener('mouseenter', () => {
-        const image = item.querySelector('img');
-        image.classList.add('carousel-blur'); // Add the hover effect class
-      });
-    });
-  </script>
-  <script>
+   <script>/*
     const CARDS_PER_PAGE = 10;
     let currentPage = 1;
     let totalCards = 100;  // Adatta questo valore al numero totale di card
 
-    function fetchCards(page) {
-        fetch(`/api/cards?page=${page}`)
-            .then(response => response.json())
-            .then(data => {
-                renderCards(data);
-                renderPagination();
-            });
-    }
-
-    function renderCards(cards) {
-        const container = document.getElementById('card-container');
-        container.innerHTML = '';
-        cards.forEach(card => {
-            const cardElement = document.createElement('div');
-            cardElement.className = 'card';
-            cardElement.innerHTML = `<h3>${card.title}</h3><p>${card.content}</p>`;
-            container.appendChild(cardElement);
-        });
-    }
 
     function renderPagination() {
-        const paginationContainer = document.getElementById('pagination');
-        paginationContainer.innerHTML = '';
-        const totalPages = Math.ceil(totalCards / CARDS_PER_PAGE);
+      const paginationContainer = document.getElementById('pagination');
+      paginationContainer.innerHTML = '';
+      const totalPages = Math.ceil(totalCards / CARDS_PER_PAGE);
 
-        for (let i = 1; i <= totalPages; i++) {
-            const pageLink = document.createElement('span');
-            pageLink.className = 'page-link';
-            pageLink.innerText = i;
-            pageLink.onclick = () => {
-                currentPage = i;
-                fetchCards(currentPage);
-            };
-            paginationContainer.appendChild(pageLink);
-        }
+      for (let i = 1; i <= totalPages; i++) {
+        const pageLink = document.createElement('span');
+        pageLink.className = 'page-link';
+        pageLink.innerText = i;
+        pageLink.onclick = () => {
+          currentPage = i;
+          fetchCards(currentPage);
+        };
+        paginationContainer.appendChild(pageLink);
+      }
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-        fetchCards(currentPage);
-    });
-</script>
+      fetchCards(currentPage);
+    });*/
+  </script>
 
 </body>
 
