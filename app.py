@@ -31,7 +31,7 @@ def home():
 
 @app.route('/ristoranti')
 def ristoranti():
-    ristoranti = execute_query('SELECT * FROM book')
+    ristoranti = execute_query('SELECT * FROM restaurant LIMIT 10')
     return render_template("ristoranti.html", ristoranti=ristoranti)
 
 @app.route('/chi_siamo')
