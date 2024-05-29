@@ -76,6 +76,14 @@ create_table_review = """
 CREATE TABLE review (
 users_id INT,
 restaurant_id INT,
+restaurant_link VARCHAR(150),
+title VARCHAR(150),
+review_date VARCHAR(150),
+target VARCHAR(100),
+t_review VARCHAR(700),
+punteggio VARCHAR(50),
+photo1 VARCHAR(200),
+photo2 VARCHAR(200),
 PRIMARY KEY (restaurant_id, users_id),
 FOREIGN KEY (restaurant_id) REFERENCES restaurant(restaurant_id),
 FOREIGN KEY (users_id) REFERENCES users(users_id)

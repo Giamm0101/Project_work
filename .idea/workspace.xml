@@ -5,15 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e55eca9c-97e7-4c11-ad49-2daeff13de0d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/back_end/Creazione_database4_risolto.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back_end/Creazione_tabelle_nuovo.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/back_end/recensioni.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back_end/Creazione_database.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back_end/Creazione_database2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back_end/Creazione_database3.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/back_end/Creazione_database4.py" beforeDir="false" afterPath="$PROJECT_DIR$/back_end/Creazione_database4.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back_end/funzioni_DB.py" beforeDir="false" afterPath="$PROJECT_DIR$/back_end/funzioni_DB.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back_end/Creazione_database4_risolto.py" beforeDir="false" afterPath="$PROJECT_DIR$/back_end/Creazione_database4_risolto.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back_end/Creazione_tabelle.py" beforeDir="false" afterPath="$PROJECT_DIR$/back_end/Creazione_tabelle.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +41,7 @@
     "Python.Creazione_database2.executor": "Run",
     "Python.Creazione_database3.executor": "Run",
     "Python.Creazione_database4.executor": "Run",
+    "Python.Creazione_database4_risolto.executor": "Run",
     "Python.Creazione_database5.executor": "Run",
     "Python.Creazione_database6.executor": "Run",
     "Python.Creazione_tabelle.executor": "Run",
@@ -54,6 +49,8 @@
     "Python.funzioni_DB.executor": "Run",
     "Python.main_pulito.executor": "Run",
     "Python.pulizia_csv.executor": "Run",
+    "Python.recensioni.executor": "Run",
+    "Python.users.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "annagiada",
