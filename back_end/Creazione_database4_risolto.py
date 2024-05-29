@@ -217,9 +217,23 @@ def insert_associations_cuisine(connection, lettore, diz_ris):
             execute_query_place_many(connection, link_query, None, part)
 
 
+def insert_associations_reviews(connection, lettore, diz_ris):
+    link_query = ('INSERT INTO review(users_id, restaurant_id, restaurant_link, title, review_date, target, t_review, punteggio, photo1, photo2)'
+            ' VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)')
+    for riga in tqdm(lettore):
+        user_id = riga[8]
+        title = riga[0]
+        restaurant_link = riga[1]
+        data = riga[2]
+        target = riga[3]
+        t_review = riga[4]
+        punteggio = riga[5]
+        photo1 = riga[6]
+        photo2 = riga[7]
 
-
-
+        restaurant_id = diz_ris[restaurant_link]
+        t = (user_id, restaurant_id,restaurant_link, title, data, target, t_review, punteggio, photo1, photo2)
+        execute_query_place(connection, link_query, t)
 
 
 # First pass to insert special diets and cuisines
@@ -268,14 +282,5 @@ with open('users_definitivo.csv', encoding='utf-8') as file:
 with open('recensioni_totali_user.csv', encoding='utf-8') as file:
     lettore = csv.reader(file, delimiter=",")
     next(lettore)
-    for riga in lettore:
-        q= 'INSERT INTO review(title, data, target, t_review, punteggio, photo1, photo2) VALUES (%s,%s,%s,%s,%s,%s,%s)'
-        title= riga[0]
-        data=riga[2]
-        target=riga[3]
-        t_review=riga[4]
-        punteggio=riga[5]
-        photo1 = riga[6]
-        photo2 = riga[7]
-        t=(title, data, target, t_review, punteggio,photo1, photo2)
-        execute_query_place(connection2, q, t)
+    insert_associations_reviews(connection2, lettore, diz_ris)
+    #i ristoranti recensiti sono solo 181 in totale
