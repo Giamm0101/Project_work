@@ -266,7 +266,7 @@ with open('back_end/Dataset_ancora_più_pulito.csv', encoding='utf-8') as file:
     insert_associations_cuisine(connection2, lettore, diz_ris)
 
 
-with open('users_definitivo.csv', encoding='utf-8') as file:
+with open('back_end/users_definitivo.csv', encoding='utf-8') as file:
     lettore = csv.reader(file, delimiter=",")
     next(lettore)
     for riga in lettore:
@@ -279,7 +279,7 @@ with open('users_definitivo.csv', encoding='utf-8') as file:
         t=(nick, name, surname, email, password)
         execute_query_place(connection2, q, t)
 
-with open('recensioni_totali_user.csv', encoding='utf-8') as file:
+with open('back_end/recensioni_totali_user.csv', encoding='utf-8') as file:
     lettore = csv.reader(file, delimiter=",")
     next(lettore)
     insert_associations_reviews(connection2, lettore, diz_ris)

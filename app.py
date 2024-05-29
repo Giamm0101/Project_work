@@ -31,13 +31,27 @@ def home():
 
 @app.route('/ristoranti')
 def ristoranti():
-    ristoranti = execute_query('SELECT * FROM restaurant LIMIT 15')
-    return render_template("ristoranti.html", ristoranti=ristoranti)
+    nr = execute_query('SELECT COUNT(*) as n FROM restaurant ')
+    nr = nr[0]['n']
+    np =request.args.get('page')
+    if np == None:
+        np =0
+    else:
+        np = int(np)
+    ristoranti = execute_query('SELECT * FROM restaurant LIMIT 15 offset %s', (np*15,))
+    return render_template("ristoranti.html", ristoranti=ristoranti, page = np, max_page = nr//15)
 
 @app.route('/ristoranti/<country>')
 def ristoranti_country(country):
-    ristoranti = execute_query('SELECT * FROM restaurant AS r JOIN location AS l ON r.location_id = l.location_id WHERE l.country = %s LIMIT 15', (country,))
-    return render_template("ristoranti_country.html", ristoranti=ristoranti)
+    nr = execute_query('SELECT COUNT(*) as n FROM restaurant AS r JOIN location AS l ON r.location_id = l.location_id WHERE l.country = %s ', (country,))
+    nr = nr[0]['n']
+    np =request.args.get('page')
+    if np == None:
+        np =0
+    else:
+        np = int(np)
+    ristoranti = execute_query('SELECT * FROM restaurant AS r JOIN location AS l ON r.location_id = l.location_id WHERE l.country = %s LIMIT 15 offset %s', (country,np*15) )
+    return render_template("ristoranti_country.html", ristoranti=ristoranti, page = np, max_page = nr//15, country = country)
     #return ristoranti
 
 @app.route('/chi_siamo')
@@ -48,9 +62,6 @@ def chi_siamo():
 def contatti():
     return render_template('contatti.html')
 
-@app.route('/')
-def index():
-    return render_template('index.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
