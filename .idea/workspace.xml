@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e55eca9c-97e7-4c11-ad49-2daeff13de0d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/back_end/Creazione_database4_risolto.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back_end/Creazione_tabelle_nuovo.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/back_end/recensioni.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back_end/Creazione_database.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back_end/Creazione_database2.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back_end/Creazione_database3.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back_end/Creazione_database4.py" beforeDir="false" afterPath="$PROJECT_DIR$/back_end/Creazione_database4.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/back_end/funzioni_DB.py" beforeDir="false" afterPath="$PROJECT_DIR$/back_end/funzioni_DB.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2guqE0F8Cie0XLs7kRNsk8YZFLz" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.Creazione_database.executor": "Run",
+    "Python.Creazione_database2.executor": "Run",
+    "Python.Creazione_database3.executor": "Run",
+    "Python.Creazione_database4.executor": "Run",
+    "Python.Creazione_database5.executor": "Run",
+    "Python.Creazione_database6.executor": "Run",
+    "Python.Creazione_tabelle.executor": "Run",
+    "Python.Pulizia.executor": "Run",
+    "Python.funzioni_DB.executor": "Run",
+    "Python.main_pulito.executor": "Run",
+    "Python.pulizia_csv.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "annagiada",
+    "last_opened_file_path": "C:/Users/Anna Giada/Documents/GitHub/Project_work/back_end"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Anna Giada\Documents\GitHub\Project_work\back_end" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Anna Giada\Documents\GitHub\Project_work\back_end" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-d68999036c7f-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.14475.56" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e55eca9c-97e7-4c11-ad49-2daeff13de0d" name="Changes" comment="" />
+      <created>1716557694756</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1716557694756</updated>
+    </task>
+    <servers />
+  </component>
+</project>
