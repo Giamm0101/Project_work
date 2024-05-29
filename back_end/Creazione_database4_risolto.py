@@ -223,30 +223,30 @@ def insert_associations_cuisine(connection, lettore, diz_ris):
 
 
 # First pass to insert special diets and cuisines
-with open('Dataset_ancora_più_pulito.csv', encoding='utf-8') as file:
+with open('back_end/Dataset_ancora_più_pulito.csv', encoding='utf-8') as file:
     lettore = csv.reader(file, delimiter=",")
     next(lettore)
     insert_special_diets_and_cuisines(connection2, lettore)
 
 # Second pass to insert location and restaurant data
-with open('Dataset_ancora_più_pulito.csv', encoding='utf-8') as file:
+with open('back_end/Dataset_ancora_più_pulito.csv', encoding='utf-8') as file:
     lettore = csv.reader(file, delimiter=",")
     next(lettore)
     insert_data_location(connection2, lettore)
 
-with open('Dataset_ancora_più_pulito.csv', encoding='utf-8') as file:
+with open('back_end/Dataset_ancora_più_pulito.csv', encoding='utf-8') as file:
     lettore = csv.reader(file, delimiter=",")
     next(lettore)
     diz_ris = insert_data_restaurant(connection2, lettore)
 #
 # # Third pass to insert associations
-with open('Dataset_ancora_più_pulito.csv', encoding='utf-8') as file:
+with open('back_end/Dataset_ancora_più_pulito.csv', encoding='utf-8') as file:
     lettore = csv.reader(file, delimiter=",")
     next(lettore)
     insert_associations(connection2, lettore, diz_ris)
 
 #Inserimento cucine
-with open('Dataset_ancora_più_pulito.csv', encoding='utf-8') as file:
+with open('back_end/Dataset_ancora_più_pulito.csv', encoding='utf-8') as file:
     lettore = csv.reader(file, delimiter=",")
     next(lettore)
     insert_associations_cuisine(connection2, lettore, diz_ris)
