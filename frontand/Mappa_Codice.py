@@ -22,7 +22,7 @@ try:
 
     cursor = conn.cursor()
     logging.debug('Esecuzione della query per recuperare i dati')
-    cursor.execute("SELECT name, latitude, longitude FROM restaurant")
+    cursor.execute("SELECT name, top_tags, latitude, longitude FROM restaurant")
     ristoranti = cursor.fetchall()
     logging.debug(f'Recupero dei dati completato: {len(ristoranti)} ristoranti trovati')
 
@@ -47,7 +47,7 @@ try:
     # Aggiungi i ristoranti alla mappa con clustering
     logging.debug('Aggiunta dei ristoranti alla mappa con clustering')
     marker_cluster = MarkerCluster().add_to(mappa)
-    for nome, lat, lon in tqdm(ristoranti, desc="Aggiunta dei ristoranti alla mappa"):
+    for nome, top_tags, lat, lon in tqdm(ristoranti, desc="Aggiunta dei ristoranti alla mappa"):
         if lat == 0 or lon == 0:
             logging.debug(f'Salto del ristorante {nome} per coordinate non valide ({lat}, {lon})')
             continue

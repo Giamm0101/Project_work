@@ -34,12 +34,14 @@ def ristoranti():
     if request.method == 'POST':
 
         city = request.form['city']
-        diet = request.args.get('diet')
-
+        print(city)
+        diet = request.form['diet']
+        print(diet)
         # Conta il numero totale di ristoranti
         query = """SELECT COUNT(*) as n FROM restaurant AS r JOIN risto_diet AS rd ON r.restaurant_id=rd.restaurant_id JOIN special_diet as sp 
         ON rd.special_diet_id=sp.special_diet_id JOIN location AS l ON r.location_id=l.location_id WHERE l.city = %s"""
         params = [city]
+
         if diet:
             query += " AND rd.special_diet_id = %s"
             params.append(diet)
@@ -55,17 +57,19 @@ def ristoranti():
             np = int(np)
         
         # Recupera i ristoranti per la pagina corrente
-        query = """SELECT * FROM restaurant AS r JOIN risto_diet AS rd ON r.restaurant_id=rd.restaurant_id JOIN special_diet as sp 
+        query = """SELECT r.restaurant_id, r.name, r.top_tags, r.address, r.price_range FROM restaurant AS r JOIN risto_diet AS rd ON r.restaurant_id=rd.restaurant_id JOIN special_diet as sp 
         ON rd.special_diet_id=sp.special_diet_id JOIN location AS l ON r.location_id=l.location_id WHERE 1=1 """
         if city:
             query += "AND l.city = %s"
         if diet:
             query += " AND rd.special_diet_id = %s"
-        query += "GROUP BY r.restaurant_id LIMIT 15 OFFSET %s"
-        params.append(np * 15)
+        if not diet :
+            query += "GROUP BY r.restaurant_id "
+        
+       # params.append(np * 15)
         
         ristoranti = execute_query(query, tuple(params))
-        print(ristoranti[0])
+        print(ristoranti)
         
         return render_template("ristoranti.html", ristoranti=ristoranti, page=np, max_page=(nr // 15))
     else:
