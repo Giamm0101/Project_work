@@ -62,6 +62,10 @@ def chi_siamo():
 def contatti():
     return render_template('contatti.html')
 
+@app.route('/mappa')
+def mappa():
+    return render_template('mappa.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)

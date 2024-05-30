@@ -5,9 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/static/Logo.png" type="image/png">
-    <title>project work</title>
+    <title>Contatti</title>
 
     <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            min-width: 300px;
+        }
+
         #intro {
             position: relative;
             width: 100%;
@@ -39,101 +44,93 @@
             text-align: center;
         }
 
-        .container_ {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            padding: 20px;
-            max-width: 100%;
-            justify-items: center;            
-        }
-
-        .card {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            transition: transform 0.3s ease;
-            
-            width: 200px;
-            
-        }
-
-        .card:hover {
-            transform: scale(1.05);
-        }
-
-        .card img {
-            width: 100%;
-            height: auto;
-        }
-
-        .card-content {
-            padding: 20px;
-        }
-
-        .card-title {
-            font-size: 1.5em;
-            margin: 0 0 10px;
-        }
-
-        .card-description {
-            font-size: 1em;
-            color: #555;
-        }
-
-        @media (max-width: 900px) {
-            .container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 600px) {
-            .container {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Styles for the featured card */
-        .featured-card {
-            display: inline-block;
-            width: 100%;
-            grid-column: span 2;
-            /* Spans across two grid columns */
+        .contact-container {
             position: relative;
-            margin-bottom: 30px;
-            margin-top: 50px;
-            background-color: rgba(255, 255, 255, 0.664);
-            /* Add some space between the featured card and others */
-            /* Ensure it appears above everything else */
+            width: 70%;
+            /*max-width: 1200px;*/
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            padding-top: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: rgba(0, 0, 0, 0.267);
+            color: white;
         }
 
-        .featured-card img {
-            width: 50%;
-            float: left;
-            /* Position the image to the left */
+        .form-group {
+            margin-bottom: 15px;
         }
 
-        .featured-card .card-content {
-            padding-left: 25%;
-            /* Adjust padding to accommodate the image */
+        .form-group label {
+            font-weight: bold;
         }
 
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            height: 150px;
+        }
+
+        .btn-primary {
+            background-color: #8fa382;
+            border-color: #8fa382;
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background-color: #789774;
+            border-color: #789774;
+        }
+
+        .contact-info {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .contact-info p {
+            margin: 5px 0;
+        }
+
+        .contact-info i {
+            margin-right: 10px;
+        }
+
+        footer {
+            background-color: #8fa382;
+        }
+
+        footer a {
+            color: black;
+        }
+
+        footer a:hover {
+            color: #444;
+            text-decoration: underline;
+        }
+
+        #map {
+            width: 100%;
+            height: 400px;
+        }
     </style>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css" type="text/css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:wght@100..900&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -144,9 +141,8 @@
     <!--fine logo superiore-->
     <h3>La tua Guida Completa per Mangiare Senza Glutine in Europa</h3>
     <!--navbar-->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary " style="padding: 0%;">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" style="padding: 0%;">
         <div class="container-fluid" style="background-color: #8fa382">
-
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -167,7 +163,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{url_for('mappa')}}">Mappa</a>
-                      </li>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -176,67 +172,17 @@
 
     <!--sfondo-->
     <div id="intro" class="bg-image shadow-2-strong">
-
         <div class="mask"></div>
-        <div class="featured-card">
-            <img src="/static/tavola2.avif" alt="Featured Card Image" style="width: 300px;">
-            <div class="card-content">
-                <h2 class="card-title">Gruppo 3</h2>
-                <p class="card-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur et lectus
-                    quis tellus
-                    interdum congue. Mauris ut neque ultricies</p>
-            </div>
-        </div>
-        <div class="container_">
-            <div class="card">
-                <img src="https://via.placeholder.com/300" alt="Placeholder Image">
-                <div class="card-content">
-                    <h2 class="card-title">Scheda 1</h2>
-                    <p class="card-description">Descrizione della scheda 1.</p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="https://via.placeholder.com/300" alt="Placeholder Image">
-                <div class="card-content">
-                    <h2 class="card-title">Scheda 2</h2>
-                    <p class="card-description">Descrizione della scheda 2.</p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="https://via.placeholder.com/300" alt="Placeholder Image">
-                <div class="card-content">
-                    <h2 class="card-title">Scheda 3</h2>
-                    <p class="card-description">Descrizione della scheda 3.</p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="https://via.placeholder.com/300" alt="Placeholder Image">
-                <div class="card-content">
-                    <h2 class="card-title">Scheda 4</h2>
-                    <p class="card-description">Descrizione della scheda 4.</p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="https://via.placeholder.com/300" alt="Placeholder Image">
-                <div class="card-content">
-                    <h2 class="card-title">Scheda 5</h2>
-                    <p class="card-description">Descrizione della scheda 5.</p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="https://via.placeholder.com/300" alt="Placeholder Image">
-                <div class="card-content">
-                    <h2 class="card-title">Scheda 6</h2>
-                    <p class="card-description">Descrizione della scheda 6.</p>
-                </div>
-            </div>
-        </div>
 
+        <div class="contact-container">
+
+
+        </div>
     </div>
     <!--fine sfondo-->
 
     <!-- Footer -->
-    <footer class="text-black pt-4" style="background-color: #8fa382;">
+    <footer class="text-black pt-4">
         <div class="container">
             <div class="row">
                 <div class="col-md-4 mb-4">
@@ -270,15 +216,10 @@
         </div>
     </footer>
 
-    <!-- FontAwesome JS (for icons) -->
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
-
-
-
 </body>
 
 </html>
