@@ -56,10 +56,12 @@ def ristoranti():
         
         # Recupera i ristoranti per la pagina corrente
         query = """SELECT * FROM restaurant AS r JOIN risto_diet AS rd ON r.restaurant_id=rd.restaurant_id JOIN special_diet as sp 
-        ON rd.special_diet_id=sp.special_diet_id JOIN location AS l ON r.location_id=l.location_id WHERE l.city = %s GROUP BY r.restaurant_id"""
+        ON rd.special_diet_id=sp.special_diet_id JOIN location AS l ON r.location_id=l.location_id WHERE 1=1 """
+        if city:
+            query += "AND l.city = %s"
         if diet:
             query += " AND rd.special_diet_id = %s"
-        query += " LIMIT 15 OFFSET %s"
+        query += "GROUP BY r.restaurant_id LIMIT 15 OFFSET %s"
         params.append(np * 15)
         
         ristoranti = execute_query(query, tuple(params))
