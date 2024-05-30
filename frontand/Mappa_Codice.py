@@ -52,7 +52,7 @@ try:
             logging.debug(f'Salto del ristorante {nome} per coordinate non valide ({lat}, {lon})')
             continue
         logging.debug(f'Aggiunta del ristorante: {nome} con coordinate ({lat}, {lon})')
-        folium.Marker(location=[lat, lon], popup=nome).add_to(marker_cluster)
+        folium.Marker(location=[lat, lon], popup=(nome, top_tags)).add_to(marker_cluster)
 
     # Salva la mappa come file HTML
     logging.debug('Salvataggio della mappa come file HTML')
