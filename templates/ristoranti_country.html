@@ -123,11 +123,11 @@
     <!--inizio per gli accordion-->
     <div class="container">
       {% for restaurant in ristoranti %}
-      <div class="accordion" id="accordionExample" style="position: relative;">
-        <div class="accordion-item">
+      <div class="accordion" id="accordionExample" style="position: relative; top: 5px;">
+        <div class="accordion-item" style="margin: 10px;">
           <h2 class="accordion-header" id="heading{{ restaurant.restaurant_id }}"> <button
               class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              data-bs-target="#collapse{{ restaurant.restaurant_id }}"> {{ restaurant.name }}
+              data-bs-target="#collapse{{ restaurant.restaurant_id }}" style="font-weight: bold;"> {{ restaurant.name }}
             </button>
           </h2>
           <div class="accordion-collapse collapse" id="collapse{{ restaurant.restaurant_id }}"
