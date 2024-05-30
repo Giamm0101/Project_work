@@ -127,6 +127,37 @@
             background-color: rgba(0, 0, 0, 0.5);
             z-index: 999;
         }
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+            display: block; /* Assicurarsi che sia visibile */
+            z-index: 1000; /* Assicurarsi che il banner sia sopra altri contenuti */
+        }
+        .cookie-banner p {
+            margin: 0 0 10px; /* Margine inferiore per separare dal pulsante */
+            line-height: 1.5; /* Aumentare l'altezza della linea per una migliore leggibilità */
+        }
+        .cookie-banner a {
+            color: #4CAF50; /* Colore del link */
+            text-decoration: underline;
+            display: block; /* Fare in modo che ogni link sia su una nuova riga */
+            margin-top: 5px; /* Aggiungere margine sopra ogni link */
+        }
+        .cookie-banner button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin: 5px;
+        }
     </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -185,6 +216,19 @@
         </div>
     </nav>
     <!-- fine navbar-->
+
+    <!-- cookie banner -->
+    <div class="cookie-banner" id="cookie-banner">
+        <p>
+            Attenzione, prendendo visione di questo sito i tuoi dati potrebbero non essere al sicuro e potrebbero finire sul mercato nero, nel mercato degli organi,
+            o donati a call center che ti chiameranno ogni 10 minuti.
+            <a href="https://www.youtube.com/watch?v=Sagg08DrO5U&t=5s" target="_blank">Per più informazioni sulla privacy dei tuoi dati clicca sul link</a>.
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">Se il primo link non funziona usa il secondo</a>.
+        </p>
+        <button onclick="acceptCookies('simple')">Accetta e continua</button>
+        <button onclick="acceptCookies('continue')">Accetta e continua</button>
+    </div>
+    <!-- fine cookie banner -->
 
     <!-- Pop-up quando si preme login -->
     <div class="popup-form" id="loginForm">
@@ -354,6 +398,19 @@
                 image.classList.add('carousel-blur'); // Add the hover effect class
             });
         });
+    </script>
+
+    <script>
+        function acceptCookies(type) {
+            document.getElementById('cookie-banner').style.display = 'none';
+            localStorage.setItem('cookiesAccepted', type);
+        }
+
+        window.onload = function() {
+            if (!localStorage.getItem('cookiesAccepted')) {
+                document.getElementById('cookie-banner').style.display = 'block';
+            }
+        }
     </script>
 
 </body>
