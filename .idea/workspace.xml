@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e55eca9c-97e7-4c11-ad49-2daeff13de0d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back_end/Creazione_database4_risolto.py" beforeDir="false" afterPath="$PROJECT_DIR$/back_end/Creazione_database4_risolto.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/back_end/Creazione_tabelle.py" beforeDir="false" afterPath="$PROJECT_DIR$/back_end/Creazione_tabelle.py" afterDir="false" />
-    </list>
+    <list default="true" id="e55eca9c-97e7-4c11-ad49-2daeff13de0d" name="Changes" comment="Mappa" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,6 +18,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="annagiada" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -35,28 +36,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.Creazione_database.executor": "Run",
-    "Python.Creazione_database2.executor": "Run",
-    "Python.Creazione_database3.executor": "Run",
-    "Python.Creazione_database4.executor": "Run",
-    "Python.Creazione_database4_risolto.executor": "Run",
-    "Python.Creazione_database5.executor": "Run",
-    "Python.Creazione_database6.executor": "Run",
-    "Python.Creazione_tabelle.executor": "Run",
-    "Python.Pulizia.executor": "Run",
-    "Python.funzioni_DB.executor": "Run",
-    "Python.main_pulito.executor": "Run",
-    "Python.pulizia_csv.executor": "Run",
-    "Python.recensioni.executor": "Run",
-    "Python.users.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "annagiada",
-    "last_opened_file_path": "C:/Users/Anna Giada/Documents/GitHub/Project_work/back_end"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.Creazione_database.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Creazione_database2.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Creazione_database3.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Creazione_database4.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Creazione_database4_risolto.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Creazione_database5.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Creazione_database6.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Creazione_tabelle.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Pulizia.executor&quot;: &quot;Run&quot;,
+    &quot;Python.funzioni_DB.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main_pulito.executor&quot;: &quot;Run&quot;,
+    &quot;Python.prova.executor&quot;: &quot;Run&quot;,
+    &quot;Python.pulizia_csv.executor&quot;: &quot;Run&quot;,
+    &quot;Python.recensioni.executor&quot;: &quot;Run&quot;,
+    &quot;Python.users.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Prova&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Anna Giada/Documents/GitHub/Project_work/back_end&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Anna Giada\Documents\GitHub\Project_work\back_end" />
@@ -82,5 +84,9 @@
       <updated>1716557694756</updated>
     </task>
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Mappa" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mappa" />
   </component>
 </project>
