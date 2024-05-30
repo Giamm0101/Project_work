@@ -57,7 +57,7 @@ def ristoranti():
             np = int(np)
         
         # Recupera i ristoranti per la pagina corrente
-        query = """SELECT r.restaurant_id, r.name, r.top_tags, r.address, r.price_range FROM restaurant AS r JOIN risto_diet AS rd ON r.restaurant_id=rd.restaurant_id JOIN special_diet as sp 
+        query = """SELECT r.avg_rating, r.total_reviews_count, r.restaurant_id, r.name, r.top_tags, r.address, r.price_range FROM restaurant AS r JOIN risto_diet AS rd ON r.restaurant_id=rd.restaurant_id JOIN special_diet as sp 
         ON rd.special_diet_id=sp.special_diet_id JOIN location AS l ON r.location_id=l.location_id WHERE 1=1 """
         if city:
             query += "AND l.city = %s"
